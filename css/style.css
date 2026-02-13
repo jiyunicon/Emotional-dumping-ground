@@ -1,0 +1,321 @@
+:root {
+    /* Color Palette - Dark Mode Default */
+    --bg-color: #121212;
+    --text-main: #E0E0E0;
+    --text-muted: #A0A0A0;
+    --accent-red: #EF5350;
+    /* Anger */
+    --accent-blue: #42A5F5;
+    /* Sadness */
+    --accent-green: #66BB6A;
+    /* Anxiety */
+    --accent-yellow: #FFEE58;
+    /* Self-worth */
+    --glow-color: rgba(255, 255, 255, 0.1);
+
+    /* Spacing & Layout */
+    --spacing-sm: 8px;
+    --spacing-md: 16px;
+    --spacing-lg: 32px;
+    --spacing-xl: 64px;
+
+    /* Transition */
+    --transition-slow: 0.5s ease-in-out;
+    --transition-fast: 0.2s ease-out;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    font-family: 'Inter', 'Noto Sans KR', sans-serif;
+    font-weight: 300;
+    line-height: 1.6;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    /* Prevent scroll for immersive feel */
+}
+
+#app {
+    width: 100%;
+    max-width: 600px;
+    /* Minimal width for focus */
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: var(--spacing-md);
+    position: relative;
+}
+
+/* Header & Footer */
+.main-header {
+    text-align: center;
+    padding: var(--spacing-lg) 0;
+    margin-bottom: var(--spacing-lg);
+}
+
+.logo {
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: var(--text-muted);
+    letter-spacing: 0.1em;
+    cursor: pointer;
+    transition: color var(--transition-fast);
+}
+
+.logo:hover {
+    color: var(--text-main);
+}
+
+.main-footer {
+    text-align: center;
+    padding: var(--spacing-md);
+    font-size: 0.8rem;
+    color: #444;
+    margin-top: auto;
+}
+
+/* Views & Routing */
+.view {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--transition-slow);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding-top: 100px;
+    /* Offset for header */
+}
+
+.view.active {
+    opacity: 1;
+    pointer-events: auto;
+    position: relative;
+    top: auto;
+    left: auto;
+    height: auto;
+    min-height: 50vh;
+}
+
+.view.hidden {
+    display: none;
+}
+
+/* Typography & Text */
+h2 {
+    font-weight: 300;
+    font-size: 2rem;
+    margin-bottom: var(--spacing-sm);
+    letter-spacing: -0.02em;
+}
+
+.instruction {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    margin-bottom: var(--spacing-xl);
+}
+
+.intro-text {
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+}
+
+.intro-text p {
+    font-size: 1.1rem;
+    margin-bottom: var(--spacing-md);
+    color: var(--text-muted);
+}
+
+/* Buttons */
+button {
+    background: none;
+    border: 1px solid var(--text-muted);
+    color: var(--text-main);
+    padding: 12px 24px;
+    font-family: inherit;
+    font-size: 0.9rem;
+    cursor: pointer;
+    border-radius: 4px;
+    /* Slightly rounded */
+    transition: all var(--transition-fast);
+}
+
+button:hover {
+    border-color: var(--text-main);
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.nav-btn {
+    display: block;
+    width: 200px;
+    margin: var(--spacing-md) auto;
+}
+
+.back-btn {
+    margin-top: auto;
+    border: none;
+    color: #666;
+    font-size: 0.8rem;
+}
+
+.back-btn:hover {
+    color: var(--text-main);
+    background: none;
+    border: none;
+}
+
+/* Dump Zone Specifics */
+.dump-canvas {
+    flex: 1;
+    width: 100%;
+    position: relative;
+    min-height: 300px;
+}
+
+.input-area {
+    width: 100%;
+    max-width: 400px;
+    margin-top: var(--spacing-lg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-md);
+}
+
+#emotion-input {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #444;
+    color: var(--text-main);
+    font-size: 1.2rem;
+    padding: var(--spacing-sm);
+    text-align: center;
+    font-family: inherit;
+    transition: border-color var(--transition-fast);
+}
+
+#emotion-input:focus {
+    outline: none;
+    border-bottom-color: var(--text-main);
+}
+
+.category-selectors {
+    display: flex;
+    gap: var(--spacing-md);
+}
+
+.color-btn {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    opacity: 0.5;
+    transition: transform var(--transition-fast), opacity var(--transition-fast);
+}
+
+.color-btn:hover,
+.color-btn.selected {
+    transform: scale(1.2);
+    opacity: 1;
+}
+
+.color-btn.red {
+    background-color: var(--accent-red);
+}
+
+.color-btn.blue {
+    background-color: var(--accent-blue);
+}
+
+.color-btn.green {
+    background-color: var(--accent-green);
+}
+
+.color-btn.yellow {
+    background-color: var(--accent-yellow);
+}
+
+/* Floating Text Animation */
+.floating-text {
+    position: absolute;
+    cursor: pointer;
+    user-select: none;
+    transition: opacity 1s ease-out, filter 1s ease-out;
+}
+
+.floating-text.dissolving {
+    opacity: 0;
+    filter: blur(8px);
+    transform: scale(1.1);
+}
+
+/* Restore Zone Specifics */
+.affirmation-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    align-items: center;
+}
+
+.affirmation-card {
+    padding: var(--spacing-md) var(--spacing-lg);
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: all 1s ease;
+    text-align: center;
+    color: var(--text-muted);
+}
+
+.affirmation-card:hover {
+    color: var(--text-main);
+}
+
+.affirmation-card.active {
+    color: var(--text-main);
+    text-shadow: 0 0 10px var(--glow-color);
+    transform: scale(1.05);
+}
+
+.text-btn {
+    border: none;
+    color: #444;
+    font-size: 0.8rem;
+    margin-top: var(--spacing-md);
+}
+
+.text-btn:hover {
+    color: var(--text-muted);
+    background: transparent;
+    border: none;
+}
+
+/* Keyframes */
+@keyframes float {
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(-20px);
+    }
+
+    /* Alternate is handled in JS/Animation property, 
+       but for pure CSS float, we often use 0% -> 50% -> 100% */
+}

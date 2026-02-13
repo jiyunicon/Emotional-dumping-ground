@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emotional Dumping Ground</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="app">
+        <header class="main-header">
+            <h1 class="logo" data-route="home">Emotional Dumping Ground</h1>
+        </header>
+        
+        <main id="main-content" class="content-area">
+            <!-- Dynamic Content will be loaded here -->
+            <div id="home-view" class="view active">
+                <div class="intro-text">
+                    <p>Breathe out.</p>
+                    <p>Release what weighs you down.</p>
+                    <p>Restore what lifts you up.</p>
+                </div>
+                <nav class="home-nav">
+                    <button class="nav-btn dump-btn" data-route="dump">Dump Zone</button>
+                    <button class="nav-btn restore-btn" data-route="restore">Restore Zone</button>
+                </nav>
+            </div>
+            
+            <div id="dump-view" class="view hidden">
+                <div class="zone-header">
+                    <h2>Release</h2>
+                    <p class="instruction">Type what you need to let go. Click to release.</p>
+                </div>
+                <!-- Dump Zone Content -->
+                <div id="dump-canvas" class="dump-canvas"></div>
+                <div class="input-area">
+                    <input type="text" id="emotion-input" placeholder="Type here..." autocomplete="off">
+                    <div class="category-selectors">
+                         <button class="color-btn red" data-color="red" aria-label="Anger"></button>
+                         <button class="color-btn blue" data-color="blue" aria-label="Sadness"></button>
+                         <button class="color-btn green" data-color="green" aria-label="Anxiety"></button>
+                         <button class="color-btn yellow" data-color="yellow" aria-label="Self-worth"></button>
+                    </div>
+                </div>
+                <button class="back-btn" data-route="home">Return</button>
+            </div>
+
+            <div id="restore-view" class="view hidden">
+                <div class="zone-header">
+                    <h2>Restore</h2>
+                    <p class="instruction">Absorb what you need.</p>
+                </div>
+                <!-- Restore Zone Content -->
+                <div id="affirmation-container" class="affirmation-container">
+                    <!-- Affirmations will be injected here -->
+                </div>
+                <div class="add-affirmation">
+                    <button id="add-affirmation-btn" class="text-btn">+ Add your own</button>
+                </div>
+                <button class="back-btn" data-route="home">Return</button>
+            </div>
+        </main>
+
+        <footer class="main-footer">
+            <p>Private & Secure. Your emotions stay here.</p>
+        </footer>
+    </div>
+    <script type="module" src="js/app.js"></script>
+</body>
+</html>
